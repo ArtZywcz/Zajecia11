@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,6 +22,9 @@ namespace Zajecia11
     public partial class LoginControl : UserControl
     {
 
+        public event EventHandler<LoginEventArgs> LoginAtempt;
+        public string Login { get; set; }
+        public SecureString Password { get; set; }
         public LoginControl()
         {
             InitializeComponent();
@@ -28,7 +32,31 @@ namespace Zajecia11
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            ErrorStackPanel.Children.Clear();
+            Login = TextLogin.Text;
+            Password = PasswordBox.SecurePassword;
+            LoginAtempt?.Invoke(this, new LoginEventArgs(Login, Password));
+        }
+        public void OnLoginSucces(object sender, EventArgs e)
+        {
 
         }
+        public void OnLoginFailure(object sender, LoginFailureEventArgs e)
+        {
+            foreach (var item in e.Errors)
+            {
+                ErrorStackPanel.Children.Add(
+                    new Label()
+                    {
+                        Content = $"[{item.Field}] {item.ErrorMessage}",
+                        Foreground = new SolidColorBrush(Colors.Red)
+                    });
+            }
+            Login = string.Empty;
+            PasswordBox.Clear();
+
+        }
+
     }
 }
+

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Zajecia11"
              mc:Ignorable="d" Height="167.214" Width="259.016">
     <Grid Margin="0,0,10,0">
-        <Grid HorizontalAlignment="Left" Height="159" Margin="10,10,0,0" VerticalAlignment="Top" Width="238">
+        <Grid HorizontalAlignment="Left" Height="157" Margin="10,10,0,0" VerticalAlignment="Top" Width="238">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -16,13 +16,12 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Content="Button" HorizontalAlignment="Left" Margin="34,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75"/>
-            <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-            <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,20,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="99"/>
-            <PasswordBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="99"/>
-            <Label Content="Label" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="99"/>
-            <Label Content="Label" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="99"/>
-            <Label Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="85,35,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+            <Button x:Name="ButtonLogIn" Content="Zaloguj" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+            <TextBox x:Name="TextLogin" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="99"/>
+            <PasswordBox x:Name="PasswordBox" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="99"/>
+            <Label Content="Login:" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="99"/>
+            <Label Content="Hasło:" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="99"/>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" x:Name="ErrorStackPanel" Grid.Row="2" Height="32" Margin="10,10,0,0"  VerticalAlignment="Top" Width="99"/>
         </Grid>
 
     </Grid>

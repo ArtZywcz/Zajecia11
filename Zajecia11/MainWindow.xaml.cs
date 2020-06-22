@@ -23,17 +23,42 @@ namespace Zajecia11
         public MainWindow()
         {
             InitializeComponent();
-
+            new LoginControl();
+            LoginFailed += CustomLoginControl.OnLoginFailure;
+            LoginSucces += CustomLoginControl.OnLoginSucces;
         }
 
-        List<User> Users = new List<User>
+        List<User> users = new List<User>
         {
             new User("admin", "admin")
         };
 
         public event EventHandler<LoginFailureEventArgs> LoginFailed;
-        public event EventHandler<EventArgs> LoginSuccess;
+        public event EventHandler<EventArgs> LoginSucces;
 
+        public void CostomLoginControl_LoginAttempt(object sender, LoginEventArgs e)
+        {
+            var user = users.Where(x => x.CheckLogin(e.Login, e.Password)).SingleOrDefault();
+
+            if (user == null)
+            {
+                LoginFailed?.Invoke(this, new LoginFailureEventArgs()
+                {
+                    Errors = new List<LoginFailureEventArgs.LoginError>()
+                    {
+                        new LoginFailureEventArgs.LoginError()
+                        {
+                            Field = LoginFields.All,
+                            ErrorMessage = "wrong username or password"
+                        }
+                    }
+                });
+            }
+            else
+            {
+                LoginSucces?.Invoke(this, EventArgs.Empty);
+            }
+        }
 
     }
 }

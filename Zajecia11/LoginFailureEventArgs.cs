@@ -15,12 +15,14 @@ namespace Zajecia11
             public LoginFields Field { get; set; }
             public string ErrorMessage { get; set; }
 
-            public enum LoginFields
-            {
-                Login,
-                Password,
-                All
-            }
+            
         }
+    }
+
+    public enum LoginFields
+    {
+        Login,
+        Password,
+        All
     }
 }

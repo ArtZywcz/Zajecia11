@@ -11,32 +11,18 @@ namespace Zajecia11
     class User
     {
 
-        public string login { get; private set; }
+        public string Login { get; private set; }
+        private string Password { get; set; }
 
-        private string password { get; set; }
-
-        public bool CheckLogin(string a, SecureString b)
+        public User(string login, string password)
         {
-            string pwd = default(string);
-
-            IntPtr pwdpointer = IntPtr.Zero;
-            try
-            {
-                pwdpointer = Marshal.SecureStringToGlobalAllocUnicode(b);
-                pwd = Marshal.PtrToStringUni(pwdpointer);
-            }
-            finally
-            {
-
-                Marshal.ZeroFreeGlobalAllocUnicode(pwdpointer);
-            }
-            return (login == a && password == pwd);
+            Login = login;
+            Password = password;
         }
-
-        public User(string x, string y)
+        public bool CheckLogin(string login, SecureString password)
         {
-            login = x;
-            password = y;
+            return (Login == login && password.ToString() == Password);
         }
     }
 }
+

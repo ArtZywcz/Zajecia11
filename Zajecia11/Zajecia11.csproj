@@ -58,6 +58,7 @@
     <Compile Include="LoginControl.xaml.cs">
       <DependentUpon>LoginControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LoginEventArgs.cs" />
     <Compile Include="LoginFailureEventArgs.cs" />
     <Compile Include="User.cs" />
     <Page Include="LoginControl.xaml">
