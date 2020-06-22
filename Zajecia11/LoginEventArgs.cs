@@ -10,9 +10,9 @@ namespace Zajecia11
     public class LoginEventArgs : EventArgs
     {
         public string Login { get; set; }
-        public SecureString Password { get; set; }
+        public string Password { get; set; }
 
-        public LoginEventArgs(string login, SecureString password)
+        public LoginEventArgs(string login, string password)
         {
             Login = login;
             Password = password;

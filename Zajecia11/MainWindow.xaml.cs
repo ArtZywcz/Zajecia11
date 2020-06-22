@@ -20,25 +20,23 @@ namespace Zajecia11
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<User> users = new List<User>()
+        {
+            new User("admin", "admin"),
+        };
+        public event EventHandler<LoginFailureEventArgs> LoginFailed;
+        public event EventHandler<EventArgs> LoginSucces;
         public MainWindow()
         {
+
             InitializeComponent();
             new LoginControl();
             LoginFailed += CustomLoginControl.OnLoginFailure;
             LoginSucces += CustomLoginControl.OnLoginSucces;
         }
-
-        List<User> users = new List<User>
-        {
-            new User("admin", "admin")
-        };
-
-        public event EventHandler<LoginFailureEventArgs> LoginFailed;
-        public event EventHandler<EventArgs> LoginSucces;
-
         public void CostomLoginControl_LoginAttempt(object sender, LoginEventArgs e)
         {
-            var user = users.Where(x => x.CheckLogin(e.Login, e.Password)).SingleOrDefault();
+            var user = users.Where(x => x.CheckLogin(e.Login, e.Password.ToString())).SingleOrDefault();
 
             if (user == null)
             {
@@ -49,7 +47,7 @@ namespace Zajecia11
                         new LoginFailureEventArgs.LoginError()
                         {
                             Field = LoginFields.All,
-                            ErrorMessage = "wrong username or password"
+                            ErrorMessage = "Zły login lub hasło"
                         }
                     }
                 });
@@ -57,6 +55,7 @@ namespace Zajecia11
             else
             {
                 LoginSucces?.Invoke(this, EventArgs.Empty);
+                this.Close();
             }
         }
 

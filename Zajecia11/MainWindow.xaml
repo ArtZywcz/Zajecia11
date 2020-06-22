@@ -6,5 +6,5 @@
         xmlns:local="clr-namespace:Zajecia11"
         mc:Ignorable="d"
         Title="MainWindow" Height="234.836" Width="266.393">
-    <local:LoginControl x:Name="CustomLoginControl" VerticalAlignment="Center" HorizontalAlignment="center" />
+    <local:LoginControl x:Name="CustomLoginControl" VerticalAlignment="Center" HorizontalAlignment="center" LoginAtempt="CostomLoginControl_LoginAttempt" Height="204" Margin="-1,0" Width="260" />
 </Window>

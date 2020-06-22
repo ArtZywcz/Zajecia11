@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace Zajecia11
 {
-    class User
+    public class User
     {
-
         public string Login { get; private set; }
         private string Password { get; set; }
 
@@ -19,10 +18,11 @@ namespace Zajecia11
             Login = login;
             Password = password;
         }
-        public bool CheckLogin(string login, SecureString password)
+        public bool CheckLogin(string login, string password)
         {
-            return (Login == login && password.ToString() == Password);
+
+
+            return (Login == login && password == Password);
         }
     }
 }
-

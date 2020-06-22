@@ -21,10 +21,9 @@ namespace Zajecia11
     /// </summary>
     public partial class LoginControl : UserControl
     {
-
         public event EventHandler<LoginEventArgs> LoginAtempt;
         public string Login { get; set; }
-        public SecureString Password { get; set; }
+        public string Password { get; set; }
         public LoginControl()
         {
             InitializeComponent();
@@ -34,12 +33,13 @@ namespace Zajecia11
         {
             ErrorStackPanel.Children.Clear();
             Login = TextLogin.Text;
-            Password = PasswordBox.SecurePassword;
+            Password = PasswordBox.Password;
             LoginAtempt?.Invoke(this, new LoginEventArgs(Login, Password));
         }
         public void OnLoginSucces(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Logowanie zakończono pomyślnie!", "Login", MessageBoxButton.OK);
+            
         }
         public void OnLoginFailure(object sender, LoginFailureEventArgs e)
         {
@@ -59,4 +59,3 @@ namespace Zajecia11
 
     }
 }
-
